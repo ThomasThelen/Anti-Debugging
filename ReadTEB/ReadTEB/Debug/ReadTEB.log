@@ -1,0 +1,5 @@
+﻿  ReadTEB.cpp
+c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(1544): warning C4091: 'typedef ': ignored on left of '' when no variable is declared
+c:\program files (x86)\windows kits\8.1\include\um\dbghelp.h(3190): warning C4091: 'typedef ': ignored on left of '' when no variable is declared
+ReadTEB.obj : error LNK2001: unresolved external symbol _ExtensionApis
+C:\Users\Central\Documents\Visual Studio 2015\Projects\ReadTEB\Debug\ReadTEB.exe : fatal error LNK1120: 1 unresolved externals

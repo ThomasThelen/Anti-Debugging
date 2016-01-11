@@ -72,12 +72,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	CheckRemoteDebuggerPresent(processHandle, &isenabled);
 	if (isenabled == TRUE)
 	{
-		cout << "Debugger is attached");
+		cout << "Debugger is attached";
 	}
 	else
 	{
 		cout << "Debugger not detected" << endl;
 	}
+	system("pause");
 	return 0;
 }
 

@@ -1,0 +1,3 @@
+﻿  ReadTEB.cpp
+ReadTEB.obj : error LNK2001: unresolved external symbol _ExtensionApis
+C:\Users\Central\Documents\Visual Studio 2015\Projects\ReadTEB\Release\ReadTEB.exe : fatal error LNK1120: 1 unresolved externals

@@ -1,15 +1,15 @@
-﻿Build started 9/29/2015 11:04:48 AM.
-     1>Project "C:\Users\Central\Documents\Visual Studio 2013\Projects\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent.vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/16/2015 6:41:36 PM.
+     1>Project "C:\Users\Central\Documents\GitHub\AntiDebugging\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\CheckRemoteDebuggerPresent.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CheckRemoteDebuggerPresent.cpp
          CheckRemoteDebuggerPresent.cpp
-     1>c:\users\central\documents\visual studio 2013\projects\checkremotedebuggerpresent\checkremotedebuggerpresent\checkremotedebuggerpresent.cpp(65): warning C4101: 'ass' : unreferenced local variable
+     1>c:\users\central\documents\github\antidebugging\checkremotedebuggerpresent\checkremotedebuggerpresent\checkremotedebuggerpresent.cpp(67): warning C4101: 'ass' : unreferenced local variable
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Central\Documents\Visual Studio 2013\Projects\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Central\Documents\Visual Studio 2013\Projects\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Central\Documents\Visual Studio 2013\Projects\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.lib" /MACHINE:X86 Debug\CheckRemoteDebuggerPresent.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Central\Documents\GitHub\AntiDebugging\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Central\Documents\GitHub\AntiDebugging\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Central\Documents\GitHub\AntiDebugging\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.lib" /MACHINE:X86 Debug\CheckRemoteDebuggerPresent.obj
          Debug\stdafx.obj
-         CheckRemoteDebuggerPresent.vcxproj -> C:\Users\Central\Documents\Visual Studio 2013\Projects\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.exe
-     1>Done Building Project "C:\Users\Central\Documents\Visual Studio 2013\Projects\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent.vcxproj" (Build target(s)).
+         CheckRemoteDebuggerPresent.vcxproj -> C:\Users\Central\Documents\GitHub\AntiDebugging\CheckRemoteDebuggerPresent\Debug\CheckRemoteDebuggerPresent.exe
+     1>Done Building Project "C:\Users\Central\Documents\GitHub\AntiDebugging\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent\CheckRemoteDebuggerPresent.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.17
+Time Elapsed 00:00:01.99
