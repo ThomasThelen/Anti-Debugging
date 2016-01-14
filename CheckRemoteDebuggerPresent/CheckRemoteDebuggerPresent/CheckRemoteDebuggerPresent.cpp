@@ -1,56 +1,50 @@
-// CheckRemoteDebuggerPresent.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include <iostream>
 #include <Windows.h>
 #include "Tlhelp32.h"
 #include <wchar.h>
-using namespace std;
 
-class process
+class Process
 {
 public:
-	void FindProcessID(wchar_t[256]);
-	void SetPrivileges();
 	wchar_t name[256];
+	BOOL is_detected;
+	void IsDbgPresent();
+
+private:
 	int pid;
-	bool debuggeractive;
 	HANDLE hSnapshot;
 	PROCESSENTRY32 pEntry;
-} proc;
+	void FindProcessID();
+	void SetPrivileges();
+};
 /*
-Because a handle is needed to the process-to-be-checked nad the PID
+Because a handle is needed to the process-to-be-checked and the PID
 is not known, it must be found from the process name. This is 
 achieved by taking a snapshot of the current processes and
 iterating through the list until the user specified process
-is found. Once found, the PID can be found.
+is found. Once found, the PID can be extracted.
 */
-void process::FindProcessID(wchar_t processname[256])
+void Process::FindProcessID()
 {
-	// Take a snapshot of current processes
-	hSnapshot=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
-	// Must set the size before calling Process32First (From MSDN)
-	pEntry.dwSize = sizeof(PROCESSENTRY32);
-	// Take the first entry and fill the PROCESSENTRY32 structure with its information
-	Process32First(hSnapshot, &proc.pEntry);
-	// Iterate through the list until the user specified process is obtained
-	while (wcscmp(proc.pEntry.szExeFile, proc.name) != 0)
+	hSnapshot=CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);	// Take a snapshot of current processes
+	pEntry.dwSize = sizeof(PROCESSENTRY32);	// Must set the size before calling Process32First (From MSDN)
+	Process32First(hSnapshot, &pEntry);	// Take the first entry and fill the PROCESSENTRY32 structure with its information
+	while (wcscmp(pEntry.szExeFile, name) != 0)	// Iterate through the list until the user specified process is obtained
 	{
-	//	system("pause");
-		Process32Next(proc.hSnapshot, &proc.pEntry);
+		Process32Next(hSnapshot, &pEntry);
 	}
-	// When it is obtained, save the PID
-	proc.pid = proc.pEntry.th32ProcessID;
-	// Clean up any handles
-	CloseHandle(proc.hSnapshot);
+	pid = pEntry.th32ProcessID;	// When it is obtained, save the PID
+	CloseHandle(hSnapshot);	// Clean the handle to the snapshot
 }
-
-void process::SetPrivileges()
+/*
+Set the current process's privileges to debug
+*/
+void Process::SetPrivileges()
 {
 	HANDLE hToken, hProcess;
 	TOKEN_PRIVILEGES tokenPriv;
-	hProcess=OpenProcess(PROCESS_ALL_ACCESS, NULL, GetCurrentProcessId());
+	hProcess = OpenProcess(PROCESS_ALL_ACCESS, NULL, GetCurrentProcessId());
 	tokenPriv.PrivilegeCount = 1;
 	LookupPrivilegeValue(NULL, _T("SeDebugPrivilege"), &tokenPriv.Privileges[0].Luid);
 	tokenPriv.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
@@ -59,24 +53,28 @@ void process::SetPrivileges()
 	CloseHandle(hToken);
 	CloseHandle(hProcess);
 }
-
-int _tmain(int argc, _TCHAR* argv[])
+void Process::IsDbgPresent()
 {
-	BOOL isenabled;
-	cout << "Enter Process Name: " << endl;
-	char *ass;
-	wcin >> proc.name;
-	proc.FindProcessID(proc.name);
 
-	HANDLE processHandle=OpenProcess(PROCESS_ALL_ACCESS, NULL, proc.pid);
-	CheckRemoteDebuggerPresent(processHandle, &isenabled);
-	if (isenabled == TRUE)
+	Process::FindProcessID();
+	Process::SetPrivileges();
+	HANDLE processHandle = OpenProcess(PROCESS_ALL_ACCESS, NULL, pid);
+	CheckRemoteDebuggerPresent(processHandle, &is_detected);
+}
+
+int main()
+{
+	Process process;
+	std::cout << "Enter Process Name: " << std::endl;
+	std::wcin >> process.name;
+	process.IsDbgPresent();
+	if (process.is_detected == TRUE)
 	{
-		cout << "Debugger is attached";
+		std::cout << "Debugger is attached"<< std::endl;
 	}
 	else
 	{
-		cout << "Debugger not detected" << endl;
+		std::cout << "Debugger not detected" << std::endl;
 	}
 	system("pause");
 	return 0;
