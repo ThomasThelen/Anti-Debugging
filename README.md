@@ -4,10 +4,10 @@ These projects demonstrate ways of cheicking if a debugger is running. The proje
 CheckRemoteDebuggerPresent
 [MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms679280%28v=vs.85%29.aspx)
 
-	   BOOL WINAPI CheckRemoteDebuggerPresent(
-	   _In_    HANDLE hProcess,
-           _Inout_ PBOOL  pbDebuggerPresent
-           );
+    BOOL WINAPI CheckRemoteDebuggerPresent(
+    _In_    HANDLE hProcess,
+    _Inout_ PBOOL  pbDebuggerPresent
+    );
 
 FindWindow
 [MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633499%28v=vs.85%29.aspx)
