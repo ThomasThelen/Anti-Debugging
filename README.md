@@ -20,5 +20,6 @@ FindWindow
 IsDebuggerPresent
 
 [MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)
+
     BOOL WINAPI IsDebuggerPresent(void);
     
