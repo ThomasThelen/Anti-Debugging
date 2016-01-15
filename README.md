@@ -13,7 +13,11 @@ FindWindow
 [MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633499%28v=vs.85%29.aspx)
 
     HWND WINAPI FindWindow(
-  _In_opt_ LPCTSTR lpClassName,
-  _In_opt_ LPCTSTR lpWindowName
-);
+    _In_opt_ LPCTSTR lpClassName,
+    _In_opt_ LPCTSTR lpWindowName
+    );
 
+IsDebuggerPresent
+[MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)
+    BOOL WINAPI IsDebuggerPresent(void);
+    
