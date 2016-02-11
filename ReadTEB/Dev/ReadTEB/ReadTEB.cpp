@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include<iostream>
 #include <Windows.h>
-using namespace std;
+
 
 int CheckTEB();
 
@@ -20,15 +20,14 @@ int _tmain(int argc, _TCHAR* argv[])
 int CheckTEB()
 {
 	int debugger_flag = 0;
-	int a;
 	__asm
 	{
 		mov eax, fs:[30h]
-		push ecx
+		push ecx // Because we are going to store the value in ecx, presere it on the stack
 		mov ecx, [eax+2]
-		mov a, ecx
-		pop ecx
+		mov debugger_flag, ecx
+		pop ecx // Take ecx back off the stack
 
 	}
-	return a;
+	return debugger_flag;
 }
