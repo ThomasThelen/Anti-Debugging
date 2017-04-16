@@ -1,33 +1,28 @@
 // ReadTEB.cpp : Defines the entry point for the console application.
 //
-
-#include "stdafx.h"
+#include"stdafx.h"
 #include<iostream>
-#include <Windows.h>
+#include <C:\Program Files (x86)\Windows Kits\10\Include\10.0.15063.0\um\windows.h>
 
 
-int CheckTEB();
-
-
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
-	if (CheckTEB())
-		MessageBoxA(NULL, "Debugger Detected", "", MB_OK);
-	system("pause");
-	return 0;
-}
+	auto checkTEB = []() {
+		int debugger_flag = 0;
+		__asm
+		{
+			mov eax, fs:[30h] //! The address to the PEB is located at position 0x30 in the TEB.
+			push ecx //! Before using ecx, preserve it by pushing it on the stack
+			mov ecx, [eax + 2] //! The BeingDebugged flag is located at the second byte in the PEB
+			mov debugger_flag, ecx
+			pop ecx //! Restore ecx to its original value
+		}
+		return debugger_flag;
+	};
 
-int CheckTEB()
-{
-	int debugger_flag = 0;
-	__asm
+	if (checkTEB())
 	{
-		mov eax, fs:[30h]
-		push ecx // Because we are going to store the value in ecx, presere it on the stack
-		mov ecx, [eax+2]
-		mov debugger_flag, ecx
-		pop ecx // Take ecx back off the stack
-
+		MessageBoxA(NULL, "Debugger Detected", "", MB_OK);
 	}
-	return debugger_flag;
+	return 0;
 }
