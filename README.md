@@ -1,7 +1,6 @@
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 # AntiDebugging
 This is a collection of short snippets that are/can be used to detect if a debugger is attached to a process.  
-
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 ### IsDebuggerPresent
 Perhaps the most trivial way of checking if a process is being run under a debugger is by calling IsDebuggerPresent. Internally, IsDebuggerPresent checks a flag in the Process Environment Block (PEB). The address of the PEB can be found in the Thread Information Block, which can be found in the FS register. 
