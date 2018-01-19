@@ -1,5 +1,6 @@
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
-# AntiDebugging
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()  [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]() [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/badges/shields.svg)]()
+
+
 This is a collection of short snippets that are/can be used to detect if a debugger is attached to a process.  
 
 ### IsDebuggerPresent
