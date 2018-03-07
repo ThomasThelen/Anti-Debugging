@@ -1,4 +1,4 @@
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()  [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)]() [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/badges/shields.svg)]()
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()  
 
 Each directory represents a different that can be used to reinforce anti-debugging/anti-cracking. Each technique, can of course, be bypassed.
 
