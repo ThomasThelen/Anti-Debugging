@@ -1,5 +1,4 @@
-## Checking for a Debugger with FindWindow
-
+## Checking for a Debugger with CheckRemoteDebuggerPresent
 
 ### Background
 
