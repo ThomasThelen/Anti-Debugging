@@ -59,6 +59,11 @@ TEB->PEB->IsBeingDebugged
 
 ### Source Code
 
+The source is fairly straight forward. We create a placeholder variable that will hold the value of `isBeingDebugged`. We then define
+an assembly block.
+
+Using assembly, we can access regions of the fs register with `fs:[offset]`. We know that we want offset 30h, so we move whatever's in fs:[30h] (a pointer to the PEB) to eax. Then, we
+access the content at address `eax+2` of the PEB (eax register). We place it in our placeholder variable, and return.
 
 
 

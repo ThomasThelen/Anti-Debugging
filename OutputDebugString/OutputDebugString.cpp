@@ -1,13 +1,11 @@
-// OutputDebugString.cpp : Defines the entry point for the console application.
-//
-
-#include "stdafx.h"
 #include <Windows.h>
 
 int main()
 {
+	// Make sure there isn't an error state
 	SetLastError(0);
-	OutputDebugStringA("Is there a debugger?");
+	// Send a string to the debugger
+	OutputDebugStringA("Hello, debugger");
 	if (GetLastError() != 0)
 	{
 		MessageBoxA(NULL, "Debugger Detected", "", MB_OK);
