@@ -2,49 +2,27 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()  
 
 
-Anti-debugging techniques are used when trying to thwart reverse engineering of software. Two common places where this is seen is in video games to prevent hackers from learning game mechanics and commercial software to stop people from writing key generators.
+When developing software, it's sometimes necessary to thwart attempts to reverse engineer your program. While reverse engineering software, it's common to run across code that attempts you from reversing.
+
+This repository hosts code that shows some fairly basic ways that developers can check for attached debuggers. If you're a reverse engineer, these are thing things that you'll need to bypass.
+
+This is in no way an exhaustive list, but may be a handy reference.
 
 ### Repository Structure
 
-#### IsDebuggerPresent
-The most trivial way to check if a debugger is present is by calling `IsDebuggerPresent`. Internally, IsDebuggerPresent checks a flag in the Process Environment Block (PEB). The address of the PEB can be found in the Thread Information Block, which can be found in the FS register. Most softwares do not soley rely on this method as it can easily be bypassed by jumping over the `cmp` instruction.
+#### Checking within your source
+[IsDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - Most basic check
 
-[MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms680345(v=vs.85).aspx)
+[OutputDebugString](./OutputDebugString/ReadMe.md) - Attempt to communicate with an attached debugger
 
-    BOOL WINAPI IsDebuggerPresent(void);
-    
-#### CheckRemoteDebuggerPresent
-When access to the program is limited, it cna be checked remotely with CheckRemoteDebuggerPresent. The function acts as a wrapper to `NtQueryInformationProcess`, which provides infomration about a specified process. One piece of infomration that can be extracted are the available debug ports. When the number is non-zero, a debugger is attached to the process. This again is easily bypassed and software rarely relies on it to stop reverse engineers.
+[FindWindow](./FindWindow/ReadMe.md) - Search for debugger windows
 
-[MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms679280%28v=vs.85%29.aspx)
+[ReadTEB](./ReadTEB/ReadMe.md) - Internals of IsDebuggerPresent
 
-    BOOL WINAPI CheckRemoteDebuggerPresent(
-    _In_    HANDLE hProcess,
-    _Inout_ PBOOL  pbDebuggerPresent
-    );
+#### Checking Other Processes
+[CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
 
-#### ReadTeb
-Reads the `BeingDebugged` field in the Process Environment Block(PEB). One way to determine the address of the PEB is by reading offset 0x30 from the Thread Information Block(TIB), which is obtained from the FS segment register. This is how `IsDebuggerPresent`  works internally. Instead of calling `IsDebuggerPresent`, some software will manually perform this check. It can be bypassed the same way a call to `IsDebuggerPresent` is.
+### References and Other Repositories
 
-#### OutputDebugString
-The Windows API allows for printing debug statements out to a debugger, and will set an error if a debugger is not found. This is used by attempting to send a message to an attached debugger and checking for errors to determine if one is attached.
-[MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/aa363362(v=vs.85).aspx)
-
-void WINAPI OutputDebugString(
-	_In_opt_ LPCTSTR lpOutputString
-	);
-
-#### FindWindow
-Instead of using debug specific APIs, if the window name of the debugger is known it can be searched for via FindWindow. Software/malware can search for window titles such as `OllyDbg`, `x64dbg`, `Soft Ice`, etc.
-[MSDN Documentation](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633499%28v=vs.85%29.aspx)
-
-    HWND WINAPI FindWindow(
-    _In_opt_ LPCTSTR lpClassName,
-    _In_opt_ LPCTSTR lpWindowName
-    );
-
-
-
-	
-	
+[Tool whose source code can be checked out]((https://github.com/secrary/makin))
 
