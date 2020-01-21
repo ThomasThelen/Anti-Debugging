@@ -8,9 +8,8 @@ This repository hosts code that shows some fairly basic ways that developers can
 
 This is in no way an exhaustive list, but may be a handy reference.
 
-### Repository Structure
 
-#### Checking within your source
+### Checking Your Own Process
 [IsDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - Most basic check
 
 [OutputDebugString](./OutputDebugString/ReadMe.md) - Attempt to communicate with an attached debugger
@@ -19,10 +18,10 @@ This is in no way an exhaustive list, but may be a handy reference.
 
 [ReadTEB](./ReadTEB/ReadMe.md) - Internals of IsDebuggerPresent
 
-#### Checking Other Processes
+### Checking Other Processes
 [CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
 
 ### References and Other Repositories
 
-[Tool whose source code can be checked out]((https://github.com/secrary/makin))
+[Tool whose source code can be checked out](https://github.com/secrary/makin)
 
