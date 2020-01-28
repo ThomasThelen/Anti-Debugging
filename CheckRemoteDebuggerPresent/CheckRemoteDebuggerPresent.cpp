@@ -1,5 +1,5 @@
-#include "stdafx.h"
 #include <iostream>
+
 #include <Windows.h>
 #include "Tlhelp32.h"
 #include <wchar.h>
@@ -19,9 +19,13 @@ namespace
 		wchar_t m_processName[256];
 
 	private:
+		// PID of this process
 		int m_pid;
+		// Handle to the snapshot
 		HANDLE m_hSnapshot;
+		
 		PROCESSENTRY32 m_processEntry;
+
 		void FindProcessID();
 		void SetPrivileges();
 	};

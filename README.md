@@ -6,7 +6,9 @@ When developing software, it's sometimes necessary to thwart attempts to reverse
 
 This repository hosts code that shows some fairly basic ways that developers can check for attached debuggers. If you're a reverse engineer, these are thing things that you'll need to bypass.
 
-This is in no way an exhaustive list, but may be a handy reference.
+At this point, there are fairly standard techniques for trying to prevent reverse engineering. There are books on it, many pdfs, research articles, and even entire websites that go in-depth into each method. This is in no way an exhaustive list, but may be worth a star if you are learning about this area and want additional code to reference.
+
+Also note that I don't describe how the methods actually work. As mentioned, this has been done a bazillion times by a bazillion people. At the end of this page I have links to other resources that describe them in detail.
 
 
 ### Checking Your Own Process
@@ -18,10 +20,14 @@ This is in no way an exhaustive list, but may be a handy reference.
 
 [ReadTEB](./ReadTEB/ReadMe.md) - Internals of IsDebuggerPresent
 
+[NtCreateThreadEx](./NtCreateThreadEx/Readme.md) - Run your code in another thread with debugging disables
+
 ### Checking Other Processes
 [CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
 
 ### References and Other Repositories
 
-[Tool whose source code can be checked out](https://github.com/secrary/makin)
+[Great guide to how these work and how to bypass them](https://www.apriorit.com/dev-blog/367-anti-reverse-engineering-protection-techniques-to-use-before-releasing-software)
+
+[Scholarly paper on additional techniques](https://www.blackhat.com/presentations/bh-usa-07/Yason/Whitepaper/bh-usa-07-yason-WP.pdf)
 
