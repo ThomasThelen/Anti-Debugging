@@ -1,5 +1,6 @@
 ![alt text](https://github.com/ThomasThelen/AntiDebugging/raw/master/anti-debug.png)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()  
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![HitCount](http://hits.dwyl.com/thomasthelen/zipline-bokeh.svg)](http://hits.dwyl.com/thomasthelen/zipline-bokeh)
 
 
 When developing software, it's sometimes necessary to thwart attempts to reverse engineer your program. While reverse engineering software, it's common to run across code that attempts you from reversing.
