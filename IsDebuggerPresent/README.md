@@ -3,8 +3,9 @@
 
 ### Background
 
-The most basic check a software developer can do to check for the presence of a debugger is with Window's built in IsDebuggerPresent. The method is located in Kernel32.dll and interfaced with IsDebuggerPresent, which exists in Windows.h
-
+The method is located in Kernel32.dll and interfaced with
+IsDebuggerPresent, which can be found in Windows.h with the rest of the
+WIN32 API.
 
 #### Relevant Links
 [MSDN Page](https://docs.microsoft.com/en-us/windows/win32/api/debugapi/nf-debugapi-isdebuggerpresent)

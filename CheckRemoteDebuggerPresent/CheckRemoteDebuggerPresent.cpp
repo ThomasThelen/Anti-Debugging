@@ -19,9 +19,9 @@ namespace
 		wchar_t m_processName[256];
 
 	private:
-		// PID of this process
+		//! PID of this process
 		int m_pid;
-		// Handle to the snapshot
+		//! Handle to the snapshot
 		HANDLE m_hSnapshot;
 		
 		PROCESSENTRY32 m_processEntry;
@@ -39,15 +39,21 @@ namespace
 	*/
 	void Process::FindProcessID()
 	{
-		m_hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);	// Get a list of all the running processes
-		m_processEntry.dwSize = sizeof(PROCESSENTRY32);	// Must set the size before calling Process32First (From MSDN)
-		Process32First(m_hSnapshot, &m_processEntry);	// Take the first entry and fill the PROCESSENTRY32 structure with its information
-		while (wcscmp(m_processEntry.szExeFile, m_processName) != 0)	// Iterate through the list until the user specified process is obtained
+	    //! Get a list of all the running processes
+		m_hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, NULL);
+		//! Must set the size before calling Process32First (From MSDN)
+		m_processEntry.dwSize = sizeof(PROCESSENTRY32);
+		//! Take the first entry and fill the PROCESSENTRY32 structure with its information
+		Process32First(m_hSnapshot, &m_processEntry);
+		//! Iterate through the list until the user specified process is obtained
+		while (wcscmp(m_processEntry.szExeFile, m_processName) != 0)
 		{
 			Process32Next(m_hSnapshot, &m_processEntry);
 		}
-		m_pid = m_processEntry.th32ProcessID;	// When it is obtained, save the PID
-		CloseHandle(m_hSnapshot);	// Clean the handle to the snapshot
+		//! When it is obtained, save the PID
+		m_pid = m_processEntry.th32ProcessID;
+		//! Clean the handle to the snapshot
+		CloseHandle(m_hSnapshot);
 	}
 
 	bool Process::IsDbgPresent()
