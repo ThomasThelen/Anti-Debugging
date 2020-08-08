@@ -3,32 +3,36 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![HitCount](http://hits.dwyl.com/thomasthelen/zipline-bokeh.svg)](http://hits.dwyl.com/thomasthelen/zipline-bokeh)
 
-When developing software, it's sometimes necessary to thwart attempts to reverse engineer your program. While reverse engineering software, it's common to run across code that attempts you from reversing.
+When developing software, it's sometimes necessary to check, at runtime
+if the application is running under the presence of a debugger.
+_Sometimes_, the goal is to stop the application from running under a
+debugger to slow reversing attempts. Conversely, a reverse engineer may
+run across the checks that the developer placed.
 
-This repository hosts code that shows some fairly basic ways that developers can check for attached debuggers. If you're a reverse engineer, these are thing things that you'll need to bypass.
-
-At this point, there are fairly standard techniques for trying to prevent reverse engineering. There are books on it, many pdfs, research articles, and even entire websites that go in-depth into each method. This is in no way an exhaustive list, but may be worth a star if you are learning about this area and want additional code to reference.
-
-Also note that I don't describe how the methods actually work. As mentioned, this has been done a bazillion times by a bazillion people. At the end of this page I have links to other resources that describe them in detail.
+This repository hosts code that shows some of the trivial ways that are
+commonly encountered in the wild. Note that bypassing this class of
+check has been almost entirely automated by modern disassemblers.
 
 
 ### Checking Your Own Process
-[IsDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - Most basic check
+[IsDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - Basic Win32 API
+call to check for the presence of a debugger
 
-[OutputDebugString](./OutputDebugString/ReadMe.md) - Attempt to communicate with an attached debugger
+[OutputDebugString](./OutputDebugString/ReadMe.md) - Use the Win32 API
+to tryto communicate with a potentially attached debugger
 
-[FindWindow](./FindWindow/ReadMe.md) - Search for debugger windows
+[FindWindow](./FindWindow/ReadMe.md) - Use the Win32 API to search for
+debugger windows
 
-[ReadTEB](./ReadTEB/ReadMe.md) - Internals of IsDebuggerPresent
+[ReadTEB](./ReadTEB/ReadMe.md) - A bried look at the internals of
+IsDebuggerPresent
 
-[NtCreateThreadEx](./NtCreateThreadEx/Readme.md) - Run your code in another thread with debugging disables
 
 ### Checking Other Processes
 [CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
 
 ### References and Other Repositories
 
-[Great guide to how these work and how to bypass them](https://www.apriorit.com/dev-blog/367-anti-reverse-engineering-protection-techniques-to-use-before-releasing-software)
-
-[Scholarly paper on additional techniques](https://www.blackhat.com/presentations/bh-usa-07/Yason/Whitepaper/bh-usa-07-yason-WP.pdf)
+[Anti Reverse Engineering Protection Techniques to Use Before Releasing
+Software](https://www.apriorit.com/dev-blog/367-anti-reverse-engineering-protection-techniques-to-use-before-releasing-software)
 
