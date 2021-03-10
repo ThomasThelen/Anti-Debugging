@@ -24,9 +24,10 @@ to tryto communicate with a potentially attached debugger
 [FindWindow](./FindWindow/ReadMe.md) - Use the Win32 API to search for
 debugger windows
 
-[ReadTEB](./ReadTEB/ReadMe.md) - A bried look at the internals of
+[ReadTEB](./ReadTEB/ReadMe.md) - A brief look at the internals of
 IsDebuggerPresent
 
+[DebugBreak](./DebugBreak/ReadMe.md) - A win32 call that will throw when a debugger isn't attached (sounds weird I know).
 
 ### Checking Other Processes
 [CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
