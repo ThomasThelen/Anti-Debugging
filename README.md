@@ -4,8 +4,17 @@
 
 This repository hosts code that shows some of the trivial ways to detect the presence of debuggers under Windows applications. More thorough resources can be found on other GitHub repositories and [Peter Ferrie](https://github.com/peterferrie)'s [The "Ultimate”Anti-Debugging Reference"](http://pferrie.epizy.com/papers/antidebug.pdf). The examples are organized by functionality.
 
+### Building
+To build the project run the following from `build/`.
+```
+cmake ../
+cmake --build .
+```
+
+The ReadTEB example makes use of `__asm` which isn't supported on x64 and is excluded from the makefile.
 
 ### Checking Within Processes
+These are some checks that can be run from within the source of an application.
 
 [IsDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - Basic Win32 API
 call to check for the presence of a debugger
@@ -19,9 +28,10 @@ debugger windows
 [ReadTEB](./ReadTEB/ReadMe.md) - A brief look at the internals of
 IsDebuggerPresent
 
-[DebugBreak](./DebugBreak/ReadMe.md) - A win32 call that will throw when a debugger isn't attached (sounds weird I know).
+[DebugBreak](./DebugBreak/ReadMe.md) - A win32 call that will throw when a debugger isn't attached.
 
 ### Checking Other Processes
+Checking external processes for the presence of an attached debugger.
 
 [CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
 
