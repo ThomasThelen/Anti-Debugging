@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.5)
+project(Anti-Debugging)
+
+set(CMAKE_CXX_STANDARD 17)
+add_executable(CheckRemoteDebuggerPresent CheckRemoteDebuggerPresent/CheckRemoteDebuggerPresent.cpp)
+add_executable(DebugBreak DebugBreak/DebugBreak.cpp)
+add_executable(FindWindow FindWindow/FindWindow.cpp)
+add_executable(IsDebuggerPresent IsDebuggerPresent/IsDebuggerPresent.cpp)
+add_executable(OutputDebugString OutputDebugString/OutputDebugString.cpp)

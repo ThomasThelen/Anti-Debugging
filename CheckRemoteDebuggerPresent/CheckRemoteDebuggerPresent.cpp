@@ -45,8 +45,11 @@ namespace
 		m_processEntry.dwSize = sizeof(PROCESSENTRY32);
 		//! Take the first entry and fill the PROCESSENTRY32 structure with its information
 		Process32First(m_hSnapshot, &m_processEntry);
+		//! Convert char* to wchar_t*
+		auto process_name = std::make_shared<wchar_t*>();
+		mbstowcs(*process_name, m_processEntry.szExeFile, strlen(m_processEntry.szExeFile) + 1);
 		//! Iterate through the list until the user specified process is obtained
-		while (wcscmp(m_processEntry.szExeFile, m_processName) != 0)
+		while (wcscmp(*process_name, m_processName) != 0)
 		{
 			Process32Next(m_hSnapshot, &m_processEntry);
 		}
@@ -78,7 +81,7 @@ namespace
 		//! Open the current process
 		auto hProcess = OpenProcess(PROCESS_ALL_ACCESS, NULL, GetCurrentProcessId());
 		tokenPriv.PrivilegeCount = 1;
-		LookupPrivilegeValue(NULL, _T("SeDebugPrivilege"), &tokenPriv.Privileges[0].Luid);
+		LookupPrivilegeValue(NULL, ("SeDebugPrivilege"), &tokenPriv.Privileges[0].Luid);
 		tokenPriv.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 		OpenProcessToken(hProcess, TOKEN_ADJUST_PRIVILEGES, &hToken);
 		AdjustTokenPrivileges(hToken, FALSE, &tokenPriv, NULL, NULL, NULL);
