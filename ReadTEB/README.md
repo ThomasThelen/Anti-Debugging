@@ -3,7 +3,7 @@
 
 ### Background
 
-Windows processes have an internal structure that defines various properties of its state. Its name is the Process Information Block (PEB); The structure below is from MSDN.
+Windows processes have an internal structure that defines various properties of its state. Its name is the Process Environment Block (PEB); The structure below is from MSDN.
 
 ```
 typedef struct _PEB {

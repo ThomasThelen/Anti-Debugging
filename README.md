@@ -2,7 +2,7 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)  [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
-This repository hosts code that shows some of the trivial ways to detect the presence of debuggers under Windows applications. More thorough resources can be found on other GitHub repositories and [Peter Ferrie](https://github.com/peterferrie)'s [The "Ultimate”Anti-Debugging Reference"](http://pferrie.epizy.com/papers/antidebug.pdf). The examples are organized by functionality.
+This repository hosts code that shows some of the trivial ways to detect the presence of debuggers under Windows applications. This came from an earlier time, before my professional career and is no longer updated. More thorough resources can be found on other GitHub repositories and [Peter Ferrie](https://github.com/peterferrie)'s [The "Ultimate”Anti-Debugging Reference"](http://pferrie.epizy.com/papers/antidebug.pdf). The examples are organized by functionality.
 
 ### Building
 To build the project run the following from `build/`.
@@ -16,24 +16,24 @@ The ReadTEB example makes use of `__asm` which isn't supported on x64 and is exc
 ### Checking Within Processes
 These are some checks that can be run from within the source of an application.
 
-[IsDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - Basic Win32 API
+[IsDebuggerPresent](./IsDebuggerPresent/README.md) - Basic Win32 API
 call to check for the presence of a debugger
 
-[OutputDebugString](./OutputDebugString/ReadMe.md) - Use the Win32 API
+[OutputDebugString](./OutputDebugString/README.md) - Use the Win32 API
 to tryto communicate with a potentially attached debugger
 
-[FindWindow](./FindWindow/ReadMe.md) - Use the Win32 API to search for
+[FindWindow](./FindWindow/README.md) - Use the Win32 API to search for
 debugger windows
 
-[ReadTEB](./ReadTEB/ReadMe.md) - A brief look at the internals of
+[ReadTEB](./ReadTEB/README.md) - A brief look at the internals of
 IsDebuggerPresent
 
-[DebugBreak](./DebugBreak/ReadMe.md) - A win32 call that will throw when a debugger isn't attached.
+[DebugBreak](./DebugBreak/README.md) - A win32 call that will throw when a debugger isn't attached.
 
 ### Checking Other Processes
 Checking external processes for the presence of an attached debugger.
 
-[CheckRemoteDebuggerPresent](./IsDebuggerPresent/ReadMe.md) - IsDebuggerPresent for external processes
+[CheckRemoteDebuggerPresent](./CheckRemoteDebuggerPresent/README.md) - IsDebuggerPresent for external processes
 
 ### References and Other Repositories
 

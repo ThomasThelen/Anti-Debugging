@@ -46,12 +46,13 @@ namespace
 		//! Take the first entry and fill the PROCESSENTRY32 structure with its information
 		Process32First(m_hSnapshot, &m_processEntry);
 		//! Convert char* to wchar_t*
-		auto process_name = std::make_shared<wchar_t*>();
-		mbstowcs(*process_name, m_processEntry.szExeFile, strlen(m_processEntry.szExeFile) + 1);
+		wchar_t process_name[256];
+		mbstowcs(process_name, m_processEntry.szExeFile, strlen(m_processEntry.szExeFile) + 1);
 		//! Iterate through the list until the user specified process is obtained
-		while (wcscmp(*process_name, m_processName) != 0)
+		while (wcscmp(process_name, m_processName) != 0)
 		{
 			Process32Next(m_hSnapshot, &m_processEntry);
+			mbstowcs(process_name, m_processEntry.szExeFile, strlen(m_processEntry.szExeFile) + 1);
 		}
 		//! When it is obtained, save the PID
 		m_pid = m_processEntry.th32ProcessID;
@@ -63,8 +64,8 @@ namespace
 	{
 		Process::FindProcessID();
 		HANDLE processHandle = OpenProcess(PROCESS_ALL_ACCESS, NULL, m_pid);
-		PBOOL isDetected = false;
-		CheckRemoteDebuggerPresent(processHandle, isDetected);
+		BOOL isDetected = FALSE;
+		CheckRemoteDebuggerPresent(processHandle, &isDetected);
 		return isDetected;
 	}
 }
